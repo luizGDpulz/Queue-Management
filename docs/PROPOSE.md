@@ -8,14 +8,14 @@
 * **Stack:**
 
   * Backend: **PHP puro** (rodando em Apache) — RESTful API JSON.
-  * Front web: **HTML + Tailwind CSS + vanilla JS** (fetch API / SSE/WebSocket).
+  * Front web: **HTML + Tailwind CSS + vanilla JS** (AJAX using `fetch` / XHR; SSE/WebSocket optional).
   * Mobile: **Kotlin + Jetpack Compose**.
-  * Banco: MySQL / MariaDB (padrão LAMP).
+  * Banco: MariaDB (padrão LAMP).
 * **Características chave:** autenticação, roles (admin/atendente/cliente), filas múltiplas, agendamentos por profissional/serviço, notificações push (FCM), realtime (SSE/WebSocket) para painel/cliente, regras de prioridade e no-show.
 
 ---
 
-# 2. Modelos de dados principais (tabelas sugeridas — MySQL)
+# 2. Modelos de dados principais (tabelas sugeridas — MariaDB)
 
 ```sql
 -- users
@@ -257,7 +257,7 @@ CREATE TABLE notifications (
 * Painel web básico para chamar próximo e ver agendados do dia.
 * Notificações via polling + in-app (push opcional).
 * Regras mínimas de prioridade (agendado no intervalo tem prioridade).
-* Persistência em MySQL + endpoints REST documentados.
+* Persistência em MariaDB + endpoints REST documentados.
 
 **Critérios de aceite MVP:**
 
@@ -304,7 +304,7 @@ CREATE TABLE notifications (
 
 # 13. Deploy / Infra (simples)
 
-* **Servidor Apache + PHP-FPM** (ou mod_php) + MySQL.
+* **Servidor Apache + PHP-FPM** (ou mod_php) + MariaDB.
 * Estrutura: `public/` como document root com index.php (API router).
 * Use Composer para dependências (mesmo com PHP “puro” é útil).
 * Ambiente: configurar `.env` (não commitar).
