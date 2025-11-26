@@ -1,0 +1,3 @@
+# Ignore the scripts folder and issue JSON files
+/scripts/
+issues*.json
